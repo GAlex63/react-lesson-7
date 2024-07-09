@@ -1,16 +1,17 @@
+import { AppContext } from "../context";
 import { EditTodoForm } from "./EditTodoForm";
 import { Todo } from "./Todo";
+import { useContext } from "react";
 
-export function TodoList({ todos, editTitle, deleteTodo, editTodo, toggleComplete, searchQuery }) {
+export function TodoList() {
+    const { todos } = useContext(AppContext)
 
    return( 
     todos.map((todo) => todo.isEditing ? 
-    (<EditTodoForm editTitle={editTitle} todo={todo} />
+    (<EditTodoForm todo={todo} />
 ) : 
 (<Todo 
     key={todo.id} 
     title={todo} 
-    deleteTodo={deleteTodo} 
-    editTodo={editTodo} 
     />))
 )}

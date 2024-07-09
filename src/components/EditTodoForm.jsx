@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { useContext } from "react";
+import { AppContext } from "../context";
 
-export function EditTodoForm({editTitle, todo}) {
+export function EditTodoForm({todo}) {
+    const { editTitle } = useContext(AppContext)
     const [value, setValue] = useState(todo.title);
 
     const handleSubmit = (event) => {

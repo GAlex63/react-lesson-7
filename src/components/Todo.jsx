@@ -1,10 +1,13 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen, faTrash} from '@fortawesome/free-solid-svg-icons';
+import { useContext } from "react";
+import { AppContext } from "../context";
 
-export function Todo({title, deleteTodo, editTodo, toggleComplete}) {
+
+export function Todo({title}) {
+    const { deleteTodo, editTodo } = useContext(AppContext)
     return (
         <div className='todo'>
-            <p className={`${title.completed ? 'Выполнено' : 'Не выполнено'}`} onClick={() => toggleComplete(title.id)}>{title.title}</p>
             <div className="btn-block">
                 <FontAwesomeIcon
                     icon={faPen} className="pen" onClick={() => editTodo(title.id)} />
